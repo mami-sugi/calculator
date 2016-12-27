@@ -26,7 +26,7 @@ mb_internal_encoding('UTF-8');
 <hr>
 <p align="center">
 <?php
-if(empty($_POST['first']) || empty($_POST['second'])) {//check undifined
+if(!isset($_POST['first']) || !isset($_POST['second'])) {//check undifined
     echo "please input number";
 }elseif(empty($_POST['str'])){
     echo "please select operator symbol";
@@ -37,20 +37,17 @@ if(empty($_POST['first']) || empty($_POST['second'])) {//check undifined
         $var3 = (int)$_POST['second'];
         if ($var2 == '+') {
             $result = $var1 + $var3;
-            echo $var1 . $var2 . $var3 . "=" . $result;
         } elseif ($var2 == '-') {
             $result = $var1 - $var3;
-            echo $var1 . $var2 . $var3 . "=" . $result;
         } elseif ($var2 == '×') {
             $result = $var1 * $var3;
+        } elseif ($var2 == '÷' && $var3 != 0) {
+            $result = $var1 / $var3;
+        }
+        if ($var2 == '÷' && $var3 == 0) {
+            echo "Can't devided by 0!!";
+        } else {
             echo $var1 . $var2 . $var3 . "=" . $result;
-        } elseif ($var2 == '÷') {
-            if ($var3 == 0) {
-                print_r("Can't devided by 0!!");
-            } else {
-                $result = $var1 / $var3;
-                echo $var1 . $var2 . $var3 . "=" . $result;
-            }
         }
     }else{
         echo "You can input only number!!";
