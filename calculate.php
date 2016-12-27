@@ -44,7 +44,7 @@ if(!isset($_POST['first']) || !isset($_POST['second'])) {//check undifined
         } elseif ($var2 == '÷' && $var3 != 0) {
                 $result = $var1 / $var3;
         }
-        if(($var2 == '÷' && $var3 == 0){
+        if($var2 == '÷' && $var3 == 0){
             print_r("Can't devided by 0!!");
         }else{
             echo $var1 . $var2 . $var3 . "=" . $result;
